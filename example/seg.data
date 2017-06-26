@@ -1,0 +1,101 @@
+# segment	name	ignore	endsent	endpara
+[01]?[0-9].[01]?[0-9].[12][0-9]{3}	DATE
+([012][0-9]|[1-9])[h:]([0-5][0-9])?	TIME
+
+[01]?[0-9]\ *[Hh:]\ *[0-5][0-9]	TIME
+[2][0123]\ *[Hh:]\ *[0-5][0-9]	TIME
+
+
+
+\d+[\.e]	ORDINAL
+(\d*[02-9])?1st	ORDINAL
+(\d*[02-9])?2nd	ORDINAL
+(\d*[02-9])?3rd	ORDINAL
+\d+th	ORDINAL
+
+00	YEAR_TIME_MINUTE
+[0]?[1-9](?!\d)	MONTH_DAY_YEAR_TIME_MINUTE
+[1][012](?!\d)	MONTH_DAY_YEAR_TIME_MINUTE
+
+
+[1][3456789](?!\d)	DAY_YEAR_MINUTE
+[2][0123](?!\d)	DAY_YEAR_MINUTE
+[2][456789](?!\d)	DAY_YEAR_MINUTE
+[3][01](?!\d)	DAY_YEAR_MINUTE
+
+[3][23456789](?!\d)	YEAR_MINUTE
+[45]\d(?!\d)	YEAR_MINUTE
+
+[1]\d\d\d(?!\d)	YEAR
+[2][0]\d\d(?!\d)	YEAR
+[56789]\d(?!\d)	YEAR
+
+
+(FR-)?\d\d ?\d\d\d(?!\d)	POSTCODE_FR
+
+0x[0-9a-fA-F]+	HEXNUMBER
+
+0[\d]{9}	TELEPHONE
+0[\d \.]{13}	TELEPHONE
+0\d{2,6}[ /\.]?\d{3,9}	TELEPHONE
+
+
+\d+	NOMBRE
+
+[01][\.,]\d+	DECIMALSING
+([+-])?\d+[,\.]\d+	DECIMAL
+
+n *(°|[o])	NUMERO
+
+M{1,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})(?=\W)	ROMAN
+M{0,4}(CM|CD|D?C{1,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})(?=\W)	ROMAN
+M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{1,3})(IX|IV|V?I{0,3})(?=\W)	ROMAN
+M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{1,3})(?=\W)	ROMAN
+
+(/?[A-Za-z]+/)*[A-Za-z]+\.[A-Za-z]{1,6}	FILENAME
+
+\w&\w	WORD
+[jJ][uU][sS][qQ][uU][\']	WORD
+[pP][uU][iI][sS][qQ][uU][\']	WORD
+[lL][oO][rR][sS][qQ][uU][\']	WORD
+[qQ][uU][oO][iI][qQ][uU][\']	WORD
+[qQ][uU][eE][lL][qQ][uU][\']	WORD
+[cdjlmnstCDJLMNST][\']	WORD
+[qQ][uU][\']	WORD
+[aA][uU][jJ][oO][uU][rR][dD][\']	WORD
+
+
+
+(Oo\')?[\wéèçàßäöüêâîôûÿŷŵñÑÄÖÜÉÈÀùÙæœÆŒåÅ]+	WORD
+
+
+\n\n+	PARA	yes	yes	yes
+\s+	ESPACE	yes	
+[();]	PUNCT
+,	COMMA
+[:\.?!]	POINT	no	yes
+\t+	WHITESPACE_POINT	yes	yes
+
+\"	GUIL
+«	GUILLEFT
+»	GUILRIGHT
+°	SYM
+
+[€£$¥]	MONEY_SYMBOL
+
+[А-Яа-яӀи́]+	CYRILLIC
+
+
+[أا-يَُِ]+	ARABIC
+
+
+[۰۱۲۳۴۵۶۷۸۹]+	FARSI_NUMBER
+[٠١٢٣٤٥٦٧٨٩]+	ARABIC_NUMBER
+[،]	ARABIC_PUNCT
+[Α-Ωα-ωάίήέόύώ]+	GREEK
+[ა-ჸ]+	GEORGIAN
+
+
+.	ANY
+
+
