@@ -47,6 +47,7 @@ create instance of the segmenter:
     Segmenter *seg = new Segmenter(string data);
 
 segment a text (read from UTF8 into a variable of the type wstring)
+
     string inputtext;
     Text result;
     boolean output_ignored_segments = false; // if true, segment types marked as ignored in the rules files if output.
