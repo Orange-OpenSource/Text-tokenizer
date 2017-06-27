@@ -44,14 +44,15 @@ the build process will download http://www.unicode.org/Public/UCD/latest/ucd/Uni
 ## API
 
 create instance of the segmenter:
+
     Segmenter *seg = new Segmenter(string data);
 
 segment a text (read from UTF8 into a variable of the type wstring)
 
-    string inputtext;
+    string inputtext; // input text in UTF-8
     Text result;
-    boolean output_ignored_segments = false; // if true, segment types marked as ignored in the rules files if output.
-    
+    boolean output_ignored_segments = false; // if true, do not ouput segment types which are marked as "ignored" in the rules file
+
     wchar_t *unicode = Unicode::fromUTF8(inputtext.c_str());
     seg->segment(wstring(unicode), result, boolean output_ignored_segments);
 
@@ -59,5 +60,5 @@ segment a text (read from UTF8 into a variable of the type wstring)
 
 
 See [example/textSegmenter.cc](example/textSegmenter.cc) for more information. 
-Do not forget to add `-I/usr/local/include/segmenter` to your c++ compiler
+Do not forget to add `-I/usr/local/include/segmenter` and `-llibsegment ` to your c++ compiler
 
