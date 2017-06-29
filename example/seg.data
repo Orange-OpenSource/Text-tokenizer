@@ -1,4 +1,17 @@
-# segment	name	ignore	endsent	endpara
+# each line defines an regex which represents a segment type
+# a segment type can be defined by several regex's
+
+# format: 
+# segment	name	[ignore	[endsent	[endpara]]]
+
+# segment: a regex which matches the segments
+# name: the name of the segment type (used in the output)
+# ignore: if present and 'yes' the segments which match this regex will not
+#         be output (usually it is uses for white spaces etc.)
+# endsent: if present and 'yes', the segments is a end-of-sentence marker
+# endpara: if present and 'yes', the segment is a ned-of-paragraph marker
+#          (this implies that endsent is true too)
+
 [01]?[0-9].[01]?[0-9].[12][0-9]{3}	DATE
 ([012][0-9]|[1-9])[h:]([0-5][0-9])?	TIME
 
