@@ -47,18 +47,28 @@ create an instance of the segmenter:
 
     Segmenter *seg = new Segmenter(string data);
 
-segment a text (read from UTF8 into a variable of the type wstring)
+read a text from a UTF8 string into a variable of the type wstring
 
     string inputtext; // input text in UTF-8
     Text result; // instance which contains the segmented text
     boolean output_ignored_segments = false; // if true, do not ouput segment types which are marked as "ignored" in the rules file
 
     wchar_t *unicode = Unicode::fromUTF8(inputtext.c_str());
+
+segment the text
+
     seg->segment(wstring(unicode), result, boolean output_ignored_segments);
 
-    result.json(cout); // output the result in json to `stdout`
-    res.longOutput(cerr); // output the result in a verbose format
 
+output the result (several possibilities)
+
+    result.json(cout); // output the result in json to stdout
+    result.longOutput(cerr); // output the result in a verbose format to stderr
+
+    // output the result into a file (simple tsv format)
+    ofstream outfile("outputfile.txt");
+    result.columns(outfile);
+    outfile.close();
 
 
 See [example/textSegmenter.cc](example/textSegmenter.cc) for more information. 
