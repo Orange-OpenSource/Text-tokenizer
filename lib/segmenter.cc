@@ -28,7 +28,7 @@ are permitted provided that the following conditions are met:
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
  Author: Johannes Heinecke
- Version:  1.0 as of 6th April 2017
+ Version:  1.1 as of 24th July 2017
 */
 
 #include "segmenter.h"
@@ -99,8 +99,8 @@ Segmenter::Segmenter(const string &filename
     //DecrypteurFichier decr(filename.c_str());
     //istream *ifp = decr.getFlux();
 
-    if (ifp == 0) {
-        throw new SegmenterException("cannot open segmentation rules " + filename);
+    if (!ifp) {
+        throw SegmenterException("cannot open segmentation rules " + filename);
     }
 
     string line;
