@@ -55,7 +55,16 @@ set(HEADERS
 
 # download information on Unicode data
 if (NOT EXISTS "${UCDATA_TXT}")
-    file(DOWNLOAD "${UCDATA_URL}" "${UCDATA_TXT}")
+    file(DOWNLOAD "${UCDATA_URL}" "${UCDATA_TXT}" STATUS status)
+    message(STATUS "Unicode data download: ${status}")
+
+    list(GET status 0 status_code)
+    # list(GET status 1 status_string)
+
+
+    if(NOT status_code EQUAL 0)
+	message(FATAL_ERROR "error: downloading '${UCDATA_URL}' failed")
+    endif()
 endif()
 
 # wrap Unicode data into a c++ class
